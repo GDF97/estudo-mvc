@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Não reescreve arquivos existentes
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Não reescreve diretórios existentes
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+<FilesMatch "^.env$">
+Require all denied
+</FilesMatch>
+
+# Encaminha as demais URLs
+
+RewriteRule ^ index.php [L]
